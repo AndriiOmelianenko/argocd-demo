@@ -10,7 +10,7 @@ metadata:
   {{- include "argocd-apps.labels" . | nindent 4 }}
 spec:
   destination:
-    namespace: argocd
+    namespace: {{ .Values.cluster.destination.namespace }}
     server: https://kubernetes.default.svc
   project: {{ .Values.cluster.project }}
   source:
