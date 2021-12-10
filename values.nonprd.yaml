@@ -3,7 +3,7 @@
 #############################
 
 cluster:
-  name: prd
+  name: nonprd
   destination:
     namespace: default
     server: https://kubernetes.default.svc

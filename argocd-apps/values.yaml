@@ -17,7 +17,7 @@ apps:
     sync: false
   application-1:
     namespace: application-1
-    enabled: false
+    enabled: true
     sync: false
   application-2:
     namespace: application-2
