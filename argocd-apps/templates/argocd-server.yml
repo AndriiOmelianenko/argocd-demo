@@ -15,7 +15,7 @@ spec:
   project: {{ .Values.cluster.project }}
   source:
     repoURL: https://argoproj.github.io/argo-helm
-    chart: argo
+    chart: argo/argo-cd
     helm:
       releaseName: argo-cd
     targetRevision: 3.28.0
