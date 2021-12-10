@@ -15,11 +15,11 @@ apps:
   argocd-server:
     enabled: false
     sync: false
-  application_1:
-    namespace: application_1
+  application-1:
+    namespace: application-1
     enabled: true
     sync: false
-  application_2:
-    namespace: application_2
+  application-2:
+    namespace: application-2
     enabled: false
     sync: false

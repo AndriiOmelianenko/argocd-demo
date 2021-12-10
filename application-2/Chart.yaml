@@ -1,5 +1,5 @@
 apiVersion: v2
-name: application_1
+name: application-2
 description: demo
 
 type: application

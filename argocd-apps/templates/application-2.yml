@@ -1,8 +1,8 @@
-{{- if index .Values.apps "application_1" "enabled" }}
+{{- if index .Values.apps "application-2" "enabled" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ (printf "%s-%s" .Values.cluster.name "application_1" ) | trimPrefix "-" }}
+  name: {{ (printf "%s-%s" .Values.cluster.name "application-2" ) | trimPrefix "-" }}
   finalizers:
   - resources-finalizer.argocd.argoproj.io
   namespace: default
@@ -10,18 +10,18 @@ metadata:
   {{- include "argocd-apps.labels" . | nindent 4 }}
 spec:
   destination:
-    namespace: {{ (printf "%s-%s" .Values.cluster.name "application_1" ) | trimPrefix "-" }}
+    namespace: {{ (printf "%s-%s" .Values.cluster.name "application-2" ) | trimPrefix "-" }}
     server: {{ .Values.cluster.destination.server }}
   project: {{ .Values.cluster.project }}
   source:
-    path: {{ .Values.cluster.source.basePath }}application_1
+    path: {{ .Values.cluster.source.basePath }}application-2
     repoURL: {{ .Values.cluster.source.repoURL }}
     targetRevision: {{ .Values.cluster.source.targetRevision }}
     helm:
       valueFiles:
         - values.yaml
         - ../values.{{ .Values.cluster.name }}.yaml
-  {{- if index .Values.apps "application_1" "sync" }}
+  {{- if index .Values.apps "application-2" "sync" }}
   syncPolicy:
     automated:
       prune: false
