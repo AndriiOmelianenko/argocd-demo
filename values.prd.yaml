@@ -12,3 +12,6 @@ cluster:
 apps:
   argocd-server:
     enabled: true
+  application-2:
+    namespace: application-2
+    enabled: true
