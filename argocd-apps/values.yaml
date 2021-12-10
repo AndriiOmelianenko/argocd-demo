@@ -11,13 +11,13 @@ cluster:
 apps:
   argocd-apps:
     enabled: false
-    sync: true
+    sync: false
   argocd-server:
     enabled: false
     sync: false
   application-1:
     namespace: application-1
-    enabled: true
+    enabled: false
     sync: false
   application-2:
     namespace: application-2
