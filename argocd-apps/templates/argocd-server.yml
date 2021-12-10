@@ -1,0 +1,27 @@
+{{- if index .Values.apps "argocd-server" "enabled" }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ (printf "%s-%s" .Values.cluster.name "argocd-server" ) | trimPrefix "-" }}
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  namespace: argocd
+  labels:
+  {{- include "argocd-apps.labels" . | nindent 4 }}
+spec:
+  destination:
+    namespace: {{ .Values.cluster.destination.namespace }}
+    server: {{ .Values.cluster.destination.server }}
+  project: {{ .Values.cluster.project }}
+  source:
+    repoURL: https://argoproj.github.io/argo-helm
+    chart: argo
+    helm:
+      releaseName: argo-cd
+  {{- if index .Values.apps "argocd-server" "sync" }}
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+  {{- end }}
+{{- end }}

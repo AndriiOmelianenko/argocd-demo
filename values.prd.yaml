@@ -1,0 +1,14 @@
+#############################
+###      argocd-apps      ###
+#############################
+
+cluster:
+  name: prd
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  source:
+    targetRevision: main
+apps:
+  argocd-server:
+    enabled: true

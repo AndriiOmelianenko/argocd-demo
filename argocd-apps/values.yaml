@@ -1,0 +1,25 @@
+cluster:
+  name: ''
+  project: default
+  source:
+    targetRevision: main
+    basePath: ./
+    repoURL: https://github.com/AndriiOmelianenko/argocd-demo.git
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+apps:
+  argocd-apps:
+    enabled: false
+    sync: true
+  argocd-server:
+    enabled: false
+    sync: false
+  application_1:
+    namespace: application_1
+    enabled: true
+    sync: false
+  application_2:
+    namespace: application_2
+    enabled: false
+    sync: false

@@ -1,0 +1,30 @@
+{{- if index .Values.apps "application_1" "enabled" }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ (printf "%s-%s" .Values.cluster.name "application_1" ) | trimPrefix "-" }}
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  namespace: argocd
+  labels:
+  {{- include "argocd-apps.labels" . | nindent 4 }}
+spec:
+  destination:
+    namespace: {{ (printf "%s-%s" .Values.cluster.name index .Values.apps "application_1" "namespace" ) | trimPrefix "-" }}
+    server: {{ .Values.cluster.destination.server }}
+  project: {{ .Values.cluster.project }}
+  source:
+    path: {{ .Values.cluster.source.basePath }}application_1
+    repoURL: {{ .Values.cluster.source.repoURL }}
+    targetRevision: {{ .Values.cluster.source.targetRevision }}
+    helm:
+      valueFiles:
+        - values.yaml
+        - ../values.{{ .Values.cluster.name }}.yaml
+  {{- if index .Values.apps "application_1" "sync" }}
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+  {{- end }}
+{{- end }}
