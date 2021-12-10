@@ -10,7 +10,7 @@ metadata:
   {{- include "argocd-apps.labels" . | nindent 4 }}
 spec:
   destination:
-    namespace: {{ (printf "%s-%s" .Values.cluster.name index .Values.apps "application_1" "namespace" ) | trimPrefix "-" }}
+    namespace: {{ (printf "%s-%s" .Values.cluster.name "application_1" ) | trimPrefix "-" }}
     server: {{ .Values.cluster.destination.server }}
   project: {{ .Values.cluster.project }}
   source:
