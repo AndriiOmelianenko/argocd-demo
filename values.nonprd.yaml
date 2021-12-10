@@ -9,6 +9,3 @@ cluster:
     server: https://kubernetes.default.svc
   source:
     targetRevision: main
-apps:
-  argocd-server:
-    enabled: false
