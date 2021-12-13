@@ -6,6 +6,8 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
   namespace: default
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   labels:
   {{- include "argocd-apps.labels" . | nindent 4 }}
 spec:

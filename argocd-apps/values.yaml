@@ -18,8 +18,8 @@ apps:
   application-1:
     namespace: application-1
     enabled: true
-    sync: false
+    sync: true
   application-2:
     namespace: application-2
     enabled: false
-    sync: false
+    sync: true
