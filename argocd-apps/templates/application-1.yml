@@ -24,7 +24,7 @@ spec:
       valueFiles:
         - ../values.{{ .Values.cluster.name }}.yaml
   {{- if index .Values.apps "application-1" "sync" }}
-  syncPolicys:
+  syncPolicy:
     automated:
       prune: false
       selfHeal: true
