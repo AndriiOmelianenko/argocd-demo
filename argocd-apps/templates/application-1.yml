@@ -22,6 +22,7 @@ spec:
     targetRevision: {{ .Values.cluster.source.targetRevision }}
     helm:
       valueFiles:
+        - values.yaml
         - ../values.{{ .Values.cluster.name }}.yaml
   {{- if index .Values.apps "application-1" "sync" }}
   syncPolicy:
